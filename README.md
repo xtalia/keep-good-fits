@@ -1,0 +1,2 @@
+# keep-good-fits
+KeepGoodFits
