@@ -1,1 +1,78 @@
-
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <title>Keep Good Fits</title>
+  <style type="text/css">
+	table   { width: 100%; color:black; background-color: #333; font-family: arial, helvetica, sans-serif; font-weight: bold; margin-bottom: 1px; }
+	td      { color: #999; vertical-align: middle; }
+	pre 	{ font-family: Verdana, sans-serif; font-size: 80%; border-width: 1; border-left: 1; border-right: 0; border-top: 0; border-bottom: 0; padding-left: 7px; border-color: #666; border-style: solid; margin-left: 20px; margin-top: 0px; margin-bottom: 2px; }
+	.button { display: none; font-family: Arial, sans-serif; border-width: 1; border-style: solid; border-color: #999; font-size: 14px; width: 18px; height: 16px; cursor: pointer; text-decoration: none; margin: 2px; font-weight: 700; color: #359; }
+	.close  { padding-left: 1px; padding-right: 2px; }
+	.open   {}
+        .main   { background-color: #111; color: #999; }
+  </style>
+  <script><!--
+  function Expand( x )
+  {
+  	x = x.replace( /Expand/, "" );
+  	document.getElementById( "Block" + x ).style.display = "inline";
+  	document.getElementById( "Expand" + x ).style.display = "none";
+  	document.getElementById( "Collapse" + x ).style.display = "inline";
+  }
+  function Collapse( x )
+  {
+  	x = x.replace( /Collapse/, "" );
+  	document.getElementById( "Block" + x ).style.display = "none";
+  	document.getElementById( "Expand" + x ).style.display = "inline";
+  	document.getElementById( "Collapse" + x ).style.display = "none";
+  }
+  function NumberIncremental( tagType, tagId, prefixId )
+  {
+    var el = document.getElementsByTagName( tagType );   	
+    var which = 0;
+    for( index=0; index<el.length; index++ )
+    {
+      if( el[index].id == tagId )
+      {
+        el[index].id = prefixId + which++;
+        el[index].display = "inline";
+      }
+    }
+  }
+  function Init()
+  {
+    NumberIncremental( "div", "Blocker", "Block" );
+    NumberIncremental( "a", "Collapser", "Collapse" );
+    NumberIncremental( "a", "Expander", "Expand" );
+    for( index=0;; index++ )
+    {
+      if( document.getElementById( "Block"+index ) )
+        Collapse( "Collapse"+index );
+      else
+        break;
+    }	
+  }
+  //-->
+  </script>
+</head>
+<body onload="Init();" class="main">
+<center>Tip: bookmark this page for future use.</center>
+%HeaderBegin%<table><tr><td align="center" nowrap width="35">%ClassName%</td></tr></table>
+%BlockBegin%
+<table>
+<tr>
+<td align="center" nowrap width="35">
+<a id="Collapser" onclick="Collapse(this.id);" class="close button">&nbsp;-&nbsp;</a>
+<a id="Expander" onclick="Expand(this.id);" class="open button">&nbsp;+&nbsp;</a>
+</td>
+<td>%ShipName%</td>
+</tr>
+</table>
+<div id="Blocker">
+<pre>
+%Setups%
+</pre>
+</div>
+%BlockEnd%
+</body>
+</html>
